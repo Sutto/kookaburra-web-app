@@ -1,0 +1,94 @@
+body {
+  text-align: center;
+  background: #191919;
+  color: white;
+  font-family: Helvetica, Verdana, Arial, Sans-Serif; }
+
+.clear {
+  clear: both; }
+
+#container {
+  width: 640px;
+  margin: 1em auto;
+  background: white;
+  color: #333;
+  -webkit-border-radius: 0.5em;
+  -moz-border-radius: 0.5em;
+  padding: 0.5em; }
+
+#header #header-top h1 a {
+  width: 344px;
+  height: 115px;
+  text-indent: -10000px;
+  margin: 1em auto 0;
+  display: block;
+  background: url('/images/logo.png') center center no-repeat; }
+#header #header-slogan {
+  color: #DDD;
+  font-size: 1.1em;
+  margin: 0.5em 0;
+  font-family: Georgia, "Times New Roman", Times, Serif; }
+
+#user-details {
+  text-align: center;
+  margin: 0 0 1em 0;
+  font-size: 1.2em;
+  font-weight: bold; }
+
+#update-status-box {
+  padding: 1em 0;
+  margin: 0; }
+  #update-status-box #status-update-field {
+    font-size: 1.3em;
+    width: 80%; }
+  #update-status-box #status-update-button {
+    font-weight: bold;
+    font-size: 0.9em;
+    margin: 0 0 0 1em;
+    padding: 0.2em 0.4em;
+    text-transform: uppercase;
+    font-weight: bold;
+    background: #DDD;
+    border: 2px solid #888;
+    -webkit-border-radius: 0.3em;
+    -moz-border-radius: 0.3em; }
+  #update-status-box #status-update-button:hover {
+    background: #777;
+    color: white; }
+  #update-status-box #details-of-message {
+    text-align: center;
+    padding: 1em 0 0;
+    color: #555;
+    font-size: 0.8em; }
+
+#messages {
+  text-align: left;
+  font-size: 1.1em;
+  line-height: 1.5em;
+  border-bottom: 1px dashed #CCC; }
+  #messages .message {
+    padding: 0.5em;
+    border-top: 1px dashed #CCC; }
+    #messages .message span.owner a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #1E3078; }
+    #messages .message span.sent-at {
+      color: #777;
+      padding-left: 0.5em;
+      font-size: 0.8em;
+      float: right; }
+  #messages .message.odd {
+    background: #F6F6F6; }
+  #messages .message.even {
+    background: #FCFCFC; }
+
+#footer {
+  font-size: 0.8em;
+  color: #999; }
+  #footer a {
+    text-decoration: none;
+    color: #719799;
+    font-weight: bold; }
+  #footer a:hover {
+    color: #832528; }

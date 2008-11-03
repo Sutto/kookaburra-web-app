@@ -1,0 +1,13 @@
+!!!
+%html{ "xml:lang" => "en-us", :lang => "en-us", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %title= @page_title
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "content-type" }/
+    = css_include_tag :reset, :kookaburra
+    = js_include_tag 'jquery', 'application'
+    
+    
+  %body
+    = partial 'shared/header'
+    #container= catch_content :for_layout
+    = partial 'shared/footer'

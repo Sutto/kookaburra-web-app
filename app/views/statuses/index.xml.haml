@@ -1,0 +1,17 @@
+%statuses{:type => "array"}
+  - @messages.each do |message|
+    %status
+      %created_at= message.created_at.utc.strftime("%Y-%m-%d %H:%M:%S")
+      %id= message.id
+      %text= h message.contents
+      %source kookaburra
+      %truncated false
+      %user
+        %id= 1000
+        %name=h message.from
+        %screen_name=h message.from
+        %location Webjam 9
+        %description Kookaburra message!
+        %profile_image_url= url("/images/merb.jpg")
+        %url
+        %protect false

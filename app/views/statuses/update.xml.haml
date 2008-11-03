@@ -1,0 +1,15 @@
+%status
+  %created_at= @message.created_at.utc.strftime("%Y-%m-%d %H:%M:%S")
+  %id= @message.id
+  %source= "kookaburra"
+  %text= h params[:status]
+  %truncated false
+  %user
+    %id= 1000
+    %name=h session[:user]
+    %screen_name=h session[:user]
+    %location Webjam 9
+    %description Kookaburra message!
+    %profile_image_url http://twitter.com/images/merb.jpg
+    %url
+    %protect false

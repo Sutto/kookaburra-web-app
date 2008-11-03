@@ -1,0 +1,7 @@
+%div{:class => "message #{cycle 'odd', 'even'}"}
+  %span.sent-at
+    = time_lost_in_words message.created_at
+    ago
+  %span.owner=link_to h(message.from), "#", :onclick => "setReplyTo('#{message.from}'); return false;"
+  %span.contents= h message.contents
+  .clear

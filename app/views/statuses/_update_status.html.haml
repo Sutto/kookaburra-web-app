@@ -1,0 +1,13 @@
+#update-status-box
+
+  #user-details
+    Oh hai there,
+    %span#current-nick=h session[:user]
+    \- what's happening?
+  
+  = form :action => url(:statuses, :action => :update), :id => "update-status-form" do
+    = text_field :status, :id => "status-update-field"
+    = button "update &raquo;", :id => 'status-update-button'
+    
+  #details-of-message
+    Your message is currently using <span id="characters-used">0</span> characters out of 140

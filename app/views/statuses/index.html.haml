@@ -1,0 +1,9 @@
+= partial 'change_nick'
+
+= partial 'update_status'
+
+- if @messages.empty?
+  #no-message Oh hai, there aren't any messages yet. Get posting!
+- else
+  #messages= partial 'message', :with => @messages
+  = "<script type=\"text/javascript\">last_message_id = #{@messages.map { |s| s.id }.max};</script>"
