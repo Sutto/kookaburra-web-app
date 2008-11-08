@@ -11,13 +11,13 @@ Merb::Config.use do |c|
 end
  
 Merb::BootLoader.before_app_loads do
-  Merb::Plugins.config[:exceptions] = {
-    :web_hooks       => [],
-    :email_addresses => ['sutto@sutto.net'],
-    :app_name        => "Kookaburra",
-    :email_from      => "sutto@sutto.net",
-    :environments    => ['production']
-  }
+  # Merb::Plugins.config[:exceptions] = {
+  #   :web_hooks       => [],
+  #   :email_addresses => ['sutto@sutto.net'],
+  #   :app_name        => "Kookaburra",
+  #   :email_from      => "sutto@sutto.net",
+  #   :environments    => ['production']
+  # }
 end
  
 Merb::BootLoader.after_app_loads do
