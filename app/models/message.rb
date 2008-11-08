@@ -7,8 +7,11 @@ class Message
   NAME_PART    = /([A-Za-z\-\_0-9]+)/
   CHANNEL_NAME = /([#\$&]+#{NAME_PART})/
   
-  attr_accessor :id, :from, :target, :contents, :created_at, :reply
+  attr_accessor  :id, :from, :target, :contents, :created_at
+  cattr_accessor :drb_obj
   
+  # Creates a new message from a given set of information, usually
+  # retrieved from a database.
   def initialize(id, from, target, contents, created_at = Time.now, mutate = true)
     self.id         = id
     self.from       = from
@@ -20,8 +23,6 @@ class Message
   end
   
   @@drb_obj = nil
-  
-  def self.drb_obj; @@drb_obj; end
   
   # Connect to the move drb server so that
   # we can access remove errors etc.
@@ -50,20 +51,32 @@ class Message
   
   def self.create(args = {})
     [:from, :contents].each { |m| return false if args[m].blank? }
-    if args[:target].blank? && args[:contents] =~ /(.*)\s+#{CHANNEL_NAME}\s*$/
+    # Check the format - if the hashtag is at the end
+    # and there is some punctuation before it, we can
+    # safely trim the hashtag.
+    if args[:target].blank? && args[:contents] =~ /(.*[\.\!\?])\s+#{CHANNEL_NAME}\s*$/
       args[:target]   = $2
       args[:contents] = $1
+    # Otherwise, it might form a part of the sentence
+    # So trimming it would prove detrimental.
     elsif args[:target].blank? && args[:contents] =~ CHANNEL_NAME
       args[:target] = $1
+    # Otherwise, we'll send it to #general
     else
-      args[:contents] ||= "#general"
+      args[:target] ||= "#general"
     end
-    args[:target] ||= "#general"
+    # Filter / mutate the outgoing text ot have the correct format.
     args[:contents] = twitter2irc(args[:contents])
+    # Finally, attempt to create it.
     resp = @@drb_obj.remote_message(args[:from], args[:target], args[:contents])[0..4]
+    # and return a new message object.
     return self.new(*resp)
   rescue
     raise IrcServerError.new
+  end
+  
+  def ==(other)
+    self.id == other.id
   end
   
   private
