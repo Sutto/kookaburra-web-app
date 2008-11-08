@@ -5,14 +5,15 @@ class Statuses < Application
   provides :xml, :html
 
   def index
-    @page_title = "Public Timeline - Kookaburra"
+    @page_title = "Public Timeline - kookaburra"
     @messages = Message.all
     display @messages, 'statuses/index'
-  end    
+  end
   
   def replies
-    @page_title = "Public replies to your - Kookaburra"
-    render :layout => (params[:format].blank? || params[:format].to_s == "html"), :format => (params[:format] || "text/html")
+    @messages = Message.replies_to(session[:user])
+    @page_title = "Replies to you"
+    display @messages
   end
   
   # Basically, render the friends timeline instead.
@@ -20,8 +21,8 @@ class Statuses < Application
     index
   end
   
-  def update
-    @message = Message.create(:contents => params[:status], :from => session[:user])
+  def update(status)
+    @message = Message.create(:contents => status, :from => session[:user])
     if params[:format].blank? || params[:format].to_s == "html"
       redirect url(:home)
     else
@@ -29,10 +30,25 @@ class Statuses < Application
     end
   end
   
-  def messages_since
-    since_id = params[:since_id].to_i
+  def messages_since(since_id)
+    since_id = since_id.to_i
     @messages = Message.all.select { |m| m.id > since_id }
     render :layout => false
+  end
+  
+  def user(username)
+    @messages = Message.from(username)
+    @page_title = "All messages from #{h username} - kookaburra"
+    render
+  end
+  
+  def with_friends
+    redirect url(:home)
+  end
+  
+  def dm
+    @messages = []
+    display @messages
   end
 
   

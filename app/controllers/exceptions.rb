@@ -14,6 +14,7 @@ class Exceptions < Merb::Controller
   
   def irc_server_error
     @page_title = "Someone setup us the bomb."
+    render :format => :html
   end
 
 end

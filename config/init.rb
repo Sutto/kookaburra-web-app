@@ -1,21 +1,23 @@
-# Go to http://wiki.merbivore.com/pages/init-rb
- 
 require 'config/dependencies.rb'
  
-use_test :rspec
+use_test            :rspec
 use_template_engine :haml
  
 Merb::Config.use do |c|
-  c[:use_mutex] = false
-  c[:session_store] = 'cookie'  # can also be 'memory', 'memcache', 'container', 'datamapper
-  
-  # cookie session store configuration
+  c[:use_mutex]           = false
+  c[:session_store]       = 'cookie'
   c[:session_secret_key]  = '9c76db7172ec610707fea990f2402f8872d51a84'  # required for cookie session store
-  # c[:session_id_key] = '_session_id' # cookie session id key, defaults to "_session_id"
+  c[:session_id_key]      = '__kookaburra_session__'
 end
  
 Merb::BootLoader.before_app_loads do
-  # This will get executed after dependencies have been loaded but before your app's classes have loaded.
+  Merb::Plugins.config[:exceptions] = {
+    :web_hooks       => [],
+    :email_addresses => ['sutto@sutto.net'],
+    :app_name        => "Kookaburra",
+    :email_from      => "sutto@sutto.net",
+    :environments    => ['production']
+  }
 end
  
 Merb::BootLoader.after_app_loads do

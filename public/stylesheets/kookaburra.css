@@ -2,14 +2,14 @@ body {
   text-align: center;
   background: #191919;
   color: white;
-  font-family: Helvetica, Verdana, Arial, Sans-Serif; }
+  font-family: helvetica, verdana, arial, sans-serif; }
 
 .clear {
   clear: both; }
 
 #container {
   width: 640px;
-  margin: 1em auto;
+  margin: 0.5em auto 1em;
   background: white;
   color: #333;
   -webkit-border-radius: 0.5em;
@@ -24,10 +24,28 @@ body {
   display: block;
   background: url('/images/logo.png') center center no-repeat; }
 #header #header-slogan {
-  color: #DDD;
-  font-size: 1.1em;
-  margin: 0.5em 0;
-  font-family: Georgia, "Times New Roman", Times, Serif; }
+  width: 210px;
+  height: 30px;
+  text-indent: -10000px;
+  background: url('/images/title.png') center center no-repeat;
+  margin: 0.5em auto; }
+#header #header-menu ul {
+  margin: 1.2em 0 0;
+  padding: 0.4em 0; }
+  #header #header-menu ul li {
+    display: inline;
+    margin: 0;
+    padding: 0.3em 0.5em;
+    border-right: 1px solid #444; }
+    #header #header-menu ul li a {
+      text-decoration: none;
+      font-size: 1em;
+      font-weight: bold;
+      color: #D2D2D2; }
+    #header #header-menu ul li a:hover {
+      color: #993231; }
+  #header #header-menu ul li.last {
+    border-right: none; }
 
 #user-details {
   text-align: center;
@@ -48,7 +66,7 @@ body {
     padding: 0.2em 0.4em;
     text-transform: uppercase;
     font-weight: bold;
-    background: #DDD;
+    background: #ddd;
     border: 2px solid #888;
     -webkit-border-radius: 0.3em;
     -moz-border-radius: 0.3em; }
@@ -59,36 +77,89 @@ body {
     text-align: center;
     padding: 1em 0 0;
     color: #555;
-    font-size: 0.8em; }
+    font-size: 0.9em; }
+  #update-status-box #details-of-message.normal {
+    color: #676E74; }
+  #update-status-box #details-of-message.middle {
+    color: #17932F; }
+  #update-status-box #details-of-message.high {
+    color: #D8A13A; }
+  #update-status-box #details-of-message.over {
+    color: #721014; }
+
+.error {
+  font-size: 1.2em;
+  line-height: 1.5em;
+  padding: 1em; }
+  .error h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #4D060C;
+    border-bottom: 1px solid #CCC;
+    padding: 0 0 0.5em;
+    margin: 0 0 0.5em; }
+
+h3.page_title {
+  text-align: center;
+  padding: 1em 0 0.5em;
+  font-size: 1.5em;
+  font-weight: bold; }
+
+#user-page-container #user-details {
+  display: none; }
 
 #messages {
   text-align: left;
   font-size: 1.1em;
   line-height: 1.5em;
-  border-bottom: 1px dashed #CCC; }
+  border-bottom: 1px dashed #ccc; }
   #messages .message {
     padding: 0.5em;
-    border-top: 1px dashed #CCC; }
+    border-top: 1px dashed #ccc;
+    overflow-x: hidden; }
     #messages .message span.owner a {
       text-decoration: none;
       font-weight: bold;
-      color: #1E3078; }
+      color: #1e3078; }
     #messages .message span.sent-at {
       color: #777;
       padding-left: 0.5em;
       font-size: 0.8em;
       float: right; }
+    #messages .message span.contents {
+      color: #444; }
+      #messages .message span.contents span.reply-to-link a {
+        font-size: 0.8em;
+        color: #888;
+        padding-left: 0.4em; }
+      #messages .message span.contents span.reply-to-link a:hover {
+        color: #1E2C99; }
+      #messages .message span.contents a {
+        text-decoration: none; }
+      #messages .message span.contents a:hover {
+        color: #99122a; }
   #messages .message.odd {
-    background: #F6F6F6; }
+    background: #f6f6f6; }
   #messages .message.even {
-    background: #FCFCFC; }
+    background: #fcfcfc; }
+  #messages .message:hover {
+    background: #E9E9E9; }
+
+#no-messages {
+  font-size: 1.2em;
+  text-align: center;
+  padding: 1em;
+  color: #3f6190; }
 
 #footer {
+  margin: 0.5em 0 1em;
   font-size: 0.8em;
-  color: #999; }
+  color: #999;
+  line-height: 1.5em; }
   #footer a {
     text-decoration: none;
-    color: #719799;
+    color: #ccc;
     font-weight: bold; }
   #footer a:hover {
     color: #832528; }

@@ -1,0 +1,15 @@
+%h3.page_title
+  All status updates from
+  =h params[:username]
+  
+#user-page-container= partial 'update_status'
+
+
+- if @messages.empty?
+  #no-messages
+    Oh hai, 
+    =h params[:username]
+    hasn't posted any messages yet.
+- else
+  #messages= partial 'message', :with => @messages
+  = "<script type=\"text/javascript\">auto_update = false; last_message_id = #{@messages.map { |s| s.id }.max};</script>"

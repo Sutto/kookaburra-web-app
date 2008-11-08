@@ -3,7 +3,7 @@
 = partial 'update_status'
 
 - if @messages.empty?
-  #no-message Oh hai, there aren't any messages yet. Get posting!
+  #no-messages Oh hai, there aren't any messages yet. Get posting!
 - else
   #messages= partial 'message', :with => @messages
-  = "<script type=\"text/javascript\">last_message_id = #{@messages.map { |s| s.id }.max};</script>"
+  = "<script type=\"text/javascript\">auto_update = true; last_message_id = #{@messages.map { |s| s.id }.max};</script>"

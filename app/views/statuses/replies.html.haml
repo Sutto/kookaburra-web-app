@@ -1,0 +1,12 @@
+%h3.page_title
+  Public replies to you
+  
+#user-page-container= partial 'update_status'
+
+
+- if @messages.empty?
+  #no-messages
+    Oh hai, no one has replied to you yet.
+- else
+  #messages= partial 'message', :with => @messages
+  = "<script type=\"text/javascript\">auto_update = false; last_message_id = #{@messages.map { |s| s.id }.max};</script>"

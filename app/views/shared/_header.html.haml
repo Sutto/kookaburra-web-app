@@ -3,3 +3,9 @@
     %h1= link_to "kookaburra", url(:home)
   #header-slogan
     %span When Twitter meets IRC
+    
+  #header-menu
+    %ul
+      %li= link_to "home", url(:home)
+      %li= link_to "your messages", url(:user, :username => session[:user])
+      %li.last= link_to "replies", url(:statuses, :action => "replies")
