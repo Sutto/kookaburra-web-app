@@ -76,7 +76,7 @@ class Message
   end
   
   def ==(other)
-    self.id == other.id
+    !other.blank? && self.id == other.id
   end
   
   private
