@@ -23,7 +23,7 @@ class Statuses < Application
   
   def update(status)
     @message = Message.create(:contents => status, :from => session[:user])
-    if params[:format].blank? || params[:format].to_s == "html"
+    if content_type == :html
       redirect url(:home)
     else
       render :layout => false
